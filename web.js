@@ -17,16 +17,21 @@ fs.exists(fileName, function(exists) {
         fs.read(fd, buffer, 0, buffer.length, null, function(error, bytesRead, buffer) {
           var data = buffer.toString("utf8", 0, buffer.length);
           console.log(data);
+          response.send(data);
           fs.close(fd);
         });
       });
     });
   }
+  else{
+  console.log("File not found ..." + filename);
+          response.send("File not found ..." + filename);
+       }
 });
 
 //---------------
    
-response.send(data);
+
   
 });
 
